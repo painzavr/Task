@@ -1,11 +1,11 @@
-1. It has the following fields:
+1. It has the following fields
 1.1. Email (required). Add validation against email pattern
 1.2. First name (required)
 1.3. Last name (required)
 1.4. Birth date (required). Value must be earlier than current date
 1.5. Address (optional)
 1.6. Phone number (optional)
-2. It has the following functionality:
+2. It has the following functionality
 2.1. Create user. PutMapping `api/users` provided with JSON of UserDTO
 It allows to register users who are more than [18] years old. The value [18] should be taken from properties file. -> `resources/application.yml`
 2.2. Update one/some user fields -> PatchMapping `api/users`
