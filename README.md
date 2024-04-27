@@ -64,15 +64,17 @@ This project implements a User Management API using Spring Boot, allowing CRUD o
 
 #### 2.1 Update Specific Fields
 
-- **Endpoint:** `PATCH /api/users/{id}`
-- **Description:** Updates specific fields of a user.
-- **Request Body:** JSON format containing fields to be updated.
-  ```json
-  {
-    "firstName": "Jane",
-    "address": "456 Avenue, Town"
-  }
+- **Endpoint:** `PATCH /api/users/{id}?field={field}`
+- **Description:** Updates a specific field of a user.
+- **Path Parameters:** 
+  - `{id}`: User ID.
+- **Query Parameter:**
+  - `field`: Field to be updated.
+- **Example:**
+  ```bash
+  PATCH /api/users/123?lastName=Jenya
   ```
+- The request body should contain the new value for the specified field.
 
 #### 2.2 Update All Fields
 
@@ -87,11 +89,15 @@ This project implements a User Management API using Spring Boot, allowing CRUD o
 
 ### 4. Search Users by Birth Date Range
 
-- **Endpoint:** `GET /api/users?fromDate={fromDate}&toDate={toDate}`
+- **Endpoint:** `GET /api/users`
 - **Description:** Retrieves a list of users within the specified birth date range.
-- **Query Parameters:**
-  - `fromDate`: Start date in YYYY-MM-DD format.
-  - `toDate`: End date in YYYY-MM-DD format.
+- **Request Body:** JSON format containing the date range.
+  ```json
+  {
+    "fromDate": "2024-01-01",
+    "toDate": "1940-01-01"
+  }
+  ```
 - **Response:** List of user objects in JSON format.
 
 ## Testing
@@ -102,6 +108,4 @@ Unit tests for the UserController are available in `UserControllerTest`. Execute
 
 The application includes a `GlobalExceptionHandler` to handle exceptions gracefully and provide appropriate error responses.
 
----
 
-This README provides a comprehensive guide to understand and utilize the User Management API. Make sure to replace `<repository-url>` with the actual URL of your repository.
